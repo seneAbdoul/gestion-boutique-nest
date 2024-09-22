@@ -1,0 +1,24 @@
+POST http://localhost:3001/api/v1/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "mail": "mama@gmail.com",
+  "password": "passer123"
+}
+
+###
+
+POST http://localhost:3001/api/v1/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "mail": "mama1@gmail.com",
+  "password": "passer123",
+  "role": "ADMIN",
+  "clientId": 3
+}
+
+###
+GET http://localhost:3001/api/v1/auth

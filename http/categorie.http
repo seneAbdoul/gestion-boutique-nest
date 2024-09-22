@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/v1/categories
+Content-Type: application/json
+Accept: application/json
+
+{
+  "libelle": "categorie3"
+}
+
+###
+
+GET http://localhost:3001/api/v1/categories

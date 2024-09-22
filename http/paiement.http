@@ -1,0 +1,16 @@
+POST http://localhost:3001/api/v1/paiements
+Content-Type: application/json
+Accept: application/json
+
+{
+      "montant": 3000,
+      "date": "2024-09-11T00:41:53.000Z",
+      "detteId": 1
+
+}
+
+###
+GET  http://localhost:3001/api/v1/paiements
+
+###
+GET  http://localhost:3001/api/v1/paiements/1

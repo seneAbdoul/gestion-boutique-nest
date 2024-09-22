@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id            Int      @id @default(autoincrement())
+  libelle       String   @unique
+  prix          Float
+  quantiteStock Int
+  prixDetail    Int
+  promotion     String
+  categorieId   Int
+  categorie     Categorie @relation(fields: [categorieId], references: [id]) 
+  dettes        Dette[]        @relation("DetteArticle")
+  ArticleDette  ArticleDette[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Categorie {
+  id        Int       @id @default(autoincrement())
+  libelle   String    @unique
+  articles  Article[] // One-to-Many relationship with Article
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  mail      String   @unique
+  password  String
+  client    Client   @relation(fields: [clientId], references: [id]) // One-to-One relationship with Client
+  clientId  Int      @unique
+  role      Role     @default(CLIENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Client {
+  id        Int      @id @default(autoincrement())
+  nom       String
+  prenom    String
+  telephone String
+  adresse   String
+  genre     String
+  photo     String?  
+  user      User?    // One-to-One relationship with User
+  dettes    Dette[]
+  demandes  Demande[] // One-to-Many relationship with Demande
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  BOUTIQUIER
+  CLIENT
+  ADMIN
+}
+
+model Dette {
+  id            Int            @id @default(autoincrement())
+  clientId      Int
+  date          DateTime
+  montantDue    Float
+  montantVerser Float
+  statut        String
+  etat          Boolean
+  client        Client         @relation(fields: [clientId], references: [id])
+  articles      Article[]      @relation("DetteArticle")
+  Paiement      Paiement[]
+  ArticleDette  ArticleDette[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ArticleDette {
+  detteId              Int
+  articleId            Int
+  quantiteArticleDette Int
+  dette                Dette   @relation(fields: [detteId], references: [id])
+  article              Article @relation(fields: [articleId], references: [id])
+
+  @@id([detteId, articleId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Paiement {
+  id      Int      @id @default(autoincrement())
+  detteId Int
+  montant Float
+  date    DateTime
+  dette   Dette    @relation(fields: [detteId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Demande {
+  id        Int      @id @default(autoincrement())
+  montant   Float
+  date      DateTime
+  statut    String
+  clientId  Int      
+  client    Client   @relation(fields: [clientId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

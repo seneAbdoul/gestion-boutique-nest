@@ -1,0 +1,55 @@
+POST http://localhost:3001/api/v1/dettes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "clientId": 1,
+  "date": "2024-09-01T21:12:14.186Z",
+  "montantDue": 8000,
+  "montantVerser": 2000,
+  "statut":        "en_cours",
+  "etat":          true,
+  "articles": [
+    {
+      "articleId": 1,
+      "quantiteArticleDette": 100
+    },
+    {
+      "articleId": 2,
+      "quantiteArticleDette": 200
+    }
+  ]
+}
+
+
+###
+
+GET http://localhost:3001/api/v1/dettes
+
+###
+
+GET http://localhost:3001/api/v1/dettes/1
+
+###
+
+GET http://localhost:3001/api/v1/dettes/client/1
+
+
+###
+POST http://localhost:3001/api/v1/dettes/date
+Content-Type: application/json
+Accept: application/json
+
+     {
+    "date": "2024-07-04T14:08:03.000Z"
+  }
+
+###
+
+PUT http://localhost:3000/api/v1/dettes/1/statut
+Content-Type: application/json
+Accept: application/json
+
+     {
+    "statut": "annuler"
+  }

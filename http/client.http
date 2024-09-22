@@ -1,0 +1,56 @@
+POST http://localhost:3001/api/v1/clients
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nom": "pinge",
+  "prenom": "ponge",
+  "telephone": "764830731",
+  "photo": "https://www.google.com/imgres?q=image&imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2024%2F06%2F24%2F04%2F05%2Fwoman-8849047_1280.jpg&imgrefurl=https%3A%2F%2Fpixabay.com%2Ffr%2Fimages%2Fsearch%2Fimage%2F&docid=EdU5BwKm5rvNzM&tbnid=xxUyN2bYMdGjKM&vet=12ahUKEwiCsoiegsOIAxVr_7sIHcTEAzEQM3oECFwQAA..i&w=1180&h=1280&hcb=2&ved=2ahUKEwiCsoiegsOIAxVr_7sIHcTEAzEQM3oECFwQAA",
+  "adresse": "ngoundiane",
+  "genre":"masculin"
+}
+
+###
+
+GET http://localhost:3001/api/v1/clients
+
+###
+
+GET http://localhost:3001/api/v1/clients/1
+
+
+
+###
+POST http://localhost:3001/api/v1/clients/telephone
+Content-Type: application/json
+Accept: application/json
+
+{
+  "telephone": "764830735"
+}
+
+
+###
+
+DELETE  http://localhost:3001/api/v1/clients/1
+
+###
+
+GET http://localhost:3001/api/v1/clients/users
+
+
+###
+
+PUT http://localhost:3001/api/v1/clients/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nom": "cheikh",
+  "prenom": "sene",
+  "telephone": "764830745",
+  "photo": "sene.jpg",
+  "adresse": "ngoundiane",
+  "genre":"masculin"
+}

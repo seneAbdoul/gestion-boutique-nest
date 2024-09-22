@@ -1,0 +1,45 @@
+POST http://localhost:3001/api/v1/articles
+Content-Type: application/json
+Accept: application/json
+
+{
+  "libelle": "article5",
+  "prix": 80000,
+  "quantiteStock": 16,
+  "prixDetail": 200,
+  "promotion": "3%",
+  "categorieId": 3
+}
+
+###
+
+GET http://localhost:3001/api/v1/articles
+
+###
+
+GET http://localhost:3001/api/v1/articles/2
+
+###
+
+POST http://localhost:3001/api/v1/articles/libelle
+Content-Type: application/json
+Accept: application/json
+
+{
+  "libelle": "article5"
+}
+
+###
+
+put http://localhost:3001/api/v1/articles/quantite/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "quantiteStock": -6
+}
+
+
+###
+
+DELETE  http://localhost:3000/api/v1/articles/3
