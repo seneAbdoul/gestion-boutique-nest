@@ -3,9 +3,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "nom": "pinge",
-  "prenom": "ponge",
-  "telephone": "764830731",
+  "nom": "signb23",
+  "prenom": "sene23",
+  "telephone": "+221764830743",
   "photo": "https://www.google.com/imgres?q=image&imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2024%2F06%2F24%2F04%2F05%2Fwoman-8849047_1280.jpg&imgrefurl=https%3A%2F%2Fpixabay.com%2Ffr%2Fimages%2Fsearch%2Fimage%2F&docid=EdU5BwKm5rvNzM&tbnid=xxUyN2bYMdGjKM&vet=12ahUKEwiCsoiegsOIAxVr_7sIHcTEAzEQM3oECFwQAA..i&w=1180&h=1280&hcb=2&ved=2ahUKEwiCsoiegsOIAxVr_7sIHcTEAzEQM3oECFwQAA",
   "adresse": "ngoundiane",
   "genre":"masculin"

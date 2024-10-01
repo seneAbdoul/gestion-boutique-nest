@@ -3,20 +3,19 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "clientId": 1,
-  "date": "2024-09-01T21:12:14.186Z",
-  "montantDue": 8000,
+  "clientId": 6,
+  "montantDue": 9000,
   "montantVerser": 2000,
   "statut":        "en_cours",
   "etat":          true,
   "articles": [
     {
       "articleId": 1,
-      "quantiteArticleDette": 100
+      "quantiteArticleDette": 200
     },
     {
       "articleId": 2,
-      "quantiteArticleDette": 200
+      "quantiteArticleDette": 400
     }
   ]
 }

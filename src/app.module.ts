@@ -8,11 +8,21 @@ import { ClientModule } from './module/client/client.module';
 import { DetteModule } from './module/dette/dette.module';
 import { PaiementModule } from './module/paiement/paiement.module';
 import { UserModule } from './module/user/user.module';
+import { NotificationModule } from './module/notification/notification.module';
+import { ScheduleModule } from '@nestjs/schedule'; 
 
 @Module({
-  imports: [ArticleModule, CategorieModule, ClientModule, DetteModule, PaiementModule, UserModule], 
+  imports: [
+    ScheduleModule.forRoot(), 
+    ArticleModule,
+    CategorieModule,
+    ClientModule,
+    DetteModule,
+    PaiementModule,
+    UserModule,
+    NotificationModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
 export class AppModule {}
-

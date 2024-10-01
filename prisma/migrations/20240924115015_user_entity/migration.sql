@@ -57,6 +57,7 @@ CREATE TABLE "Dette" (
     "id" SERIAL NOT NULL,
     "clientId" INTEGER NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
+    "dateEcheance" TIMESTAMP(3) NOT NULL,
     "montantDue" DOUBLE PRECISION NOT NULL,
     "montantVerser" DOUBLE PRECISION NOT NULL,
     "statut" TEXT NOT NULL,
@@ -104,6 +105,19 @@ CREATE TABLE "Demande" (
 );
 
 -- CreateTable
+CREATE TABLE "Notification" (
+    "id" SERIAL NOT NULL,
+    "cumuleDette" DOUBLE PRECISION NOT NULL,
+    "description" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL,
+    "clientId" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Notification_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "_DetteArticle" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
@@ -147,6 +161,9 @@ ALTER TABLE "Paiement" ADD CONSTRAINT "Paiement_detteId_fkey" FOREIGN KEY ("dett
 
 -- AddForeignKey
 ALTER TABLE "Demande" ADD CONSTRAINT "Demande_clientId_fkey" FOREIGN KEY ("clientId") REFERENCES "Client"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Notification" ADD CONSTRAINT "Notification_clientId_fkey" FOREIGN KEY ("clientId") REFERENCES "Client"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_DetteArticle" ADD CONSTRAINT "_DetteArticle_A_fkey" FOREIGN KEY ("A") REFERENCES "Article"("id") ON DELETE CASCADE ON UPDATE CASCADE;

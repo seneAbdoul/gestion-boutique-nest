@@ -6,10 +6,9 @@ export class DetteService {
   constructor(private readonly prisma: PrismaService) {
   }
 
-  // Méthode pour ajouter une nouvelle dette
   async store(data: {
     clientId: number;
-    date: Date;
+    date?: Date; 
     montantDue: number;
     montantVerser: number;
     statut: string;
@@ -17,10 +16,14 @@ export class DetteService {
     articles?: { articleId: number; quantiteArticleDette: number }[];
   }): Promise<any> {
     try {
+      const currentDate = data.date || new Date();
+      const dateEcheance = new Date(currentDate.getTime() + 8 * 60000);
+
       return await this.prisma.dette.create({
         data: {
           client: { connect: { id: data.clientId } },
-          date: data.date,
+          date: currentDate,
+          dateEcheance: dateEcheance, 
           montantDue: data.montantDue,
           montantVerser: data.montantVerser,
           statut: data.statut,
@@ -38,6 +41,7 @@ export class DetteService {
     }
   }
   
+  
 
   // Méthode pour récupérer toutes les dettes
   async show(): Promise<any[]> {
@@ -49,6 +53,7 @@ export class DetteService {
           date: true,
           montantDue: true,
           montantVerser: true,
+          dateEcheance: true,
           statut: true,
           etat: true,
           createdAt: true,

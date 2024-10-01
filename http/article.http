@@ -3,7 +3,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "libelle": "article5",
+  "libelle": "article3",
   "prix": 80000,
   "quantiteStock": 16,
   "prixDetail": 200,

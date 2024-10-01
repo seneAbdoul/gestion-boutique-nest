@@ -29,6 +29,7 @@ export class ClientService {
           photo: photoUrl, // Stockez l'URL sécurisée de la photo
         },
       });
+      
     } catch (error) {
       throw new Error('Impossible de créer le client');
     }

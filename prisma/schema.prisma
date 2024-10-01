@@ -56,6 +56,7 @@ model Client {
   user      User?    // One-to-One relationship with User
   dettes    Dette[]
   demandes  Demande[] // One-to-Many relationship with Demande
+  notifications  Notification[] // One-to-Many relationship with Demande
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -70,10 +71,12 @@ model Dette {
   id            Int            @id @default(autoincrement())
   clientId      Int
   date          DateTime
+  dateEcheance  DateTime
   montantDue    Float
   montantVerser Float
   statut        String
   etat          Boolean
+  notified      Boolean  @default(false) // Champ pour indiquer si la dette a été notifiée
   client        Client         @relation(fields: [clientId], references: [id])
   articles      Article[]      @relation("DetteArticle")
   Paiement      Paiement[]
@@ -114,3 +117,15 @@ model Demande {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Notification {
+  id            Int      @id @default(autoincrement())
+  cumuleDette   Float
+  description   String
+  date          DateTime
+  clientId      Int      
+  client        Client   @relation(fields: [clientId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+

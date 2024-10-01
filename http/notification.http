@@ -1,0 +1,14 @@
+GET http://localhost:3001/api/v1/notifications
+
+###
+
+POST http://localhost:3001/api/v1/notifications
+Content-Type: application/json
+Accept: application/json
+
+{
+  "clientId": 5,
+  "cumuleDette": 1000000,
+  "description": "bonsoir paye tes dettes",
+  "date": "2024-09-11T00:41:53.000Z"
+}

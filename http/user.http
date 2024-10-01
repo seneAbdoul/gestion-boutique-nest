@@ -14,10 +14,10 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "mail": "mama1@gmail.com",
+  "mail": "senepingpong98@gmail.com",
   "password": "passer123",
-  "role": "ADMIN",
-  "clientId": 3
+  "role": "CLIENT",
+  "clientId": 32
 }
 
 ###
